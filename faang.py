@@ -1,7 +1,9 @@
-# Wer are adding this line directly saying the interpreter to use python3
 #!/usr/bin/env python3
+# We are adding this line directly saying the interpreter to use python3
+
 
 # Import necessary libraries.
+import datetime
 import os
 import pandas as pd
 import matplotlib.pyplot as plt 
@@ -14,6 +16,8 @@ def plot_data():
     Reads the latest CSV from 'data', plots Close prices of all stocks,
     and saves the plot in 'plots' folder with timestamp.
     """
+
+    now = datetime.datetime.now()
 
     # Get all CSV files in the data folder
     files = [f for f in os.listdir('data') if f.endswith('.csv')]
@@ -35,6 +39,11 @@ def plot_data():
     plt.ylabel("Closing Price")
     plt.title(f"Stock Prices as of {df.index[-1].date()}")
     plt.legend()
+
+    # Save plot.
+    file_name = now.strftime("%Y%m%d-%H%M%S") + ".png"
+    plt.savefig(file_name)
+    plt.close()
 
 # This line means that the following code will only run if this script is executed directly, it wont run if this script is imported as a module in another script.
 if __name__ == "__main__":
