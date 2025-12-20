@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # We are adding this line directly saying the interpreter to use python3
 
 
